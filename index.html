@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Code Link Opener</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: url('https://wallpapercave.com/wp/wp6505373.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: #fff;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter Secret Code</h1>
+        <input type="text" id="codeInput" placeholder="Enter your secret code">
+        <button onclick="openLink()">Get Link</button>
+    </div>
+
+    <div class="footer">Powered By NorthGaming</div>
+
+    <script>
+        // Change the URL when the page loads
+        window.onload = function() {
+            window.history.pushState({}, '', '/NorthGaming/Minecraft/Plugins');
+        };
+
+        const links = {
+            'group1': {
+                '55767': 'https://www.mediafire.com/file/1xdcur63kypb213/Vulcan-2.8.6.jar/file',
+                '67890': 'https://www.mediafire.com/file/svu23bkxk29a8h9/lssmp-2.3.21.jar/file'
+            },
+            'group2': {
+                '54321': 'https://www.example.com/group2/page1',
+                '98765': 'https://www.example.com/group2/page2'
+            },
+            'group3': {
+                '11223': 'https://www.example.com/group3/page1',
+                '44556': 'https://www.example.com/group3/page2'
+            }
+        };
+
+        function openLink() {
+            const code = document.getElementById('codeInput').value;
+            let found = false;
+
+            for (const group in links) {
+                if (links[group][code]) {
+                    window.open(links[group][code], '_blank');
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                alert('Invalid code!');
+            }
+        }
+    </script>
+</body>
+</html>
